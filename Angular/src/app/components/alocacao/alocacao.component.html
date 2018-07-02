@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<dt class="form-group col ">
+	Lista de Alocações
+</dt>
+
+
+<!-- Formuário de cadastro de alocacoes -->
+<form [formGroup]="formularioAlocacao ">
+
+	<div class="form-group col">
+
+		<div class="input-group mb-3">
+
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="inputGroupSelect01">Tarefa</label>
+			</div>
+			<select class="custom-select" id="inputGroupSelect01" formControlName="selectTarefa" (change)="selectAlocacao()">
+				<option selected>Selecione...</option>
+				<option *ngFor="let tarefa of tarefas" value={{tarefa.id}}>{{tarefa.nome}}</option>
+			</select>
+
+		</div>
+
+		<div *ngIf="this.formularioAlocacao.get('selectTarefa').valid" class="input-group mb-3">
+
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="inputGroupSelect02">Pessoa</label>
+			</div>
+			<select class="custom-select" id="inputGroupSelect02" formControlName="selectPessoa">
+				<option selected>Selecione...</option>
+				<option *ngFor="let pessoa of pessoaSelect" value="{{pessoa.id}}">{{pessoa.nome}}</option>
+			</select>
+
+		</div>
+
+		<div *ngIf="this.formularioAlocacao.get('selectTarefa').valid">
+
+			<div class="form-row col">
+				<div class="col-10"></div>
+				<div class="col-1">
+					<button type="button" (click)="onSubmit()" class="btn btn-primary">Salvar</button>
+				</div>
+				<div class="col-1">
+					<button type="reset" class="btn btn-primary">Resetar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</form>
+
+<!-- Tabela de exibição das pessoas cadastradas -->
+<div *ngIf="respTable" class="form-group col">
+	<h3>Pessoas Escaladas</h3>
+
+	<table class="table table-striped">
+		<thead class="bg-primary">
+			<tr class="text-white">
+				<th>ID</th>
+				<th>Pessoa</th>
+				<th>Email</th>
+				<th style="width:10px">Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let x of this.alocacao">
+				<td>{{x?.pessoa?.id}}</td>
+				<td>{{x?.pessoa?.nome}}</td>
+				<td>{{x?.pessoa?.email}}</td>
+				<td>
+					<button class="btn btn fa fa-trash" type="button" (click)="remove(x)"></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

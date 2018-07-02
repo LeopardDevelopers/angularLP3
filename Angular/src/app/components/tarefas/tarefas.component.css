@@ -1,0 +1,11 @@
+dt{
+    font-size: 50px;
+}
+
+.tranparente{
+    opacity: 0;
+}
+.notTranparente{
+    opacity: 1;
+    
+}

@@ -1,0 +1,26 @@
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<div>
+	<div>
+		<nav class="sidebar menu">
+			<div class="list-group icon-bar">
+				<h1 class="list-group-item text-white material-icons text-center">settings_ethernet</h1>
+				<button class="list-group-item  text-white fa fa-user-circle" [routerLink]="['/Pessoa']" ng-click="class = "> Pessoas</button>
+				<button class="list-group-item text-white fa fa-tasks" [routerLink]="['/Tarefas']" ng-click="color()"> Tarefas</button>
+				<button class="list-group-item text-white fa fa-id-card" [routerLink]="['/Alocacao']" ng-click="color()"> Alocação</button>
+			</div>
+		</nav>
+	</div>
+	<div class="conteudo">
+		<router-outlet></router-outlet>
+	</div>
+</div>
+
+

@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+<dt class="form-group col ">
+	Lista de Pessoas
+</dt>
+
+<!-- Formuário de cadastro de pessoa -->
+<form [formGroup]="formulario">
+	<div class="form-group col">
+		<div>
+			<label>Nome:</label>
+			<input type="String" id="nome" class="form-control" name="nome" formControlName="nome" placeholder="Nome da pessoa">
+			<div id="nomeAviso" class="tranparente invalid-feedback">
+				Coloque um nome com no mínimo 3 letras e no maximo 20 letras!
+			</div>
+		</div>
+
+		<div>
+			<label>Email:</label>
+			<input type="email" id="email" class="form-control" name="email" formControlName="email" placeholder="Email da pessoa">
+			<div id="emailAviso" class="tranparente invalid-feedback">
+				Coloque um Email valido!
+			</div>
+		</div>
+	</div>
+	<div class="form-row col">
+		<div class="col-10"></div>
+		<div class="col-1">
+			<button type="button" (click)="onSubmit()" class="btn btn-primary">Salvar</button>
+		</div>
+		<div class="col-1">
+			<button type="reset" class="btn btn-primary">Resetar</button>
+		</div>
+	</div>
+</form>
+
+<br>
+
+
+<!-- Tabela de exibição das pessoas cadastradas -->
+<div *ngIf="respTable" class="form-group col">
+	<h3>Pessoas Cadastradas</h3>
+	<table class="table table-striped">
+		<thead class="bg-primary">
+			<tr class="text-white">
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Email</th>
+				<th style="width:10px">Editar</th>
+				<th style="width:10px">Excluir</th>
+			</tr>
+		</thead>
+		<tbody *ngFor="let pessoa of pessoas">
+			<tr>
+				<td>{{pessoa?.id}}</td>
+				<td>{{pessoa?.nome}}</td>
+				<td>{{pessoa?.email}}</td>
+				<td>
+					<button class="btn btn fa fa-pencil" type="button" (click)="editar(pessoa)"></button>
+				</td>
+				<td>
+					<button class="btn btn fa fa-trash" type="button" (click)="remove(pessoa)"></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

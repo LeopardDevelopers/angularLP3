@@ -1,0 +1,14 @@
+server:
+  port: 9006
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/gerador_de_tarefas?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+    username: root
+    password: root
+  jpa:
+    show_sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
